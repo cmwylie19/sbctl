@@ -14,6 +14,15 @@ _Tool to simplify Starburst configuration for data practioners._
 
 To install, go to the [releases page](https://github.com/cmwylie19/sbctl/releases) of the repository and download the binary for your operating system. It is recommended to add the binary to your path. 
 
+**Special Linux instructions**
+
+You may need to change permissions so that the current user is allowed to create an executable `trino` in the `/usr/local/bin` directory, if you do not want to do that, then you can run the commands as root.
+
+```bash
+sudo chown $(whoami) /usr/local/bin
+```
+
+
 ## Usage 
 
 This tool can install/uninstall the Trino CLI. More features to come.   
