@@ -8,6 +8,7 @@ _Tool to simplify Starburst configuration for data practioners._
 - [Installation](#installation)
 - [Usage](#usage)
 - [Build](#build-image-with-sbctl)
+- [Releases](#releases)
 
 ## Installation
 
@@ -128,4 +129,33 @@ output
 ```bash
 GOOS=<linux|darwin|windows> go build -o sbctl .
 mv sbctl build/sbctl
+```
+
+## Releases
+
+Each release should include binary files for the target operating systems with their respective sha256 checksums. The below snippet will create the the releases and checksums
+
+
+```bash
+# Intel Mac 
+GOARCH=amd64 GOOS=darwin go build -o sbctl-darwin-amd64 . 
+sha256sum sbctl-darwin-amd64 > sbctl-darwin-amd64.sha256
+
+# Silicon Mac
+GOARCH=arm64 GOOS=darwin go build -o sbctl-darwin-arm64 . 
+sha256sum sbctl-darwin-arm64 > sbctl-darwin-arm64.sha256
+
+# Linux 
+GOARCH=amd64 GOOS=linux go build -o sbctl-linux-amd64 . 
+sha256sum sbctl-linux-amd64 > sbctl-linux-amd64.sha256
+
+# Windows 
+GOARCH=amd64 GOOS=windows go build -o sbctl-windows-amd64 . 
+sha256sum sbctl-windows-amd64 > sbctl-windows-amd64.sha256
+```
+
+Checksums can be checked by:
+
+```bash
+sha256sum -c <file.sha256>
 ```
