@@ -1,4 +1,4 @@
-![Unit Tests](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yml/badge.svg)
+[![Go Test](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yaml)
 
 # Starburst Config Tool (WIP)
 
