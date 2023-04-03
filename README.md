@@ -10,13 +10,12 @@ _Tool to simplify Starburst configuration for data practioners._
 - [Build](#build-image-with-sbctl)
 
 ## Installation
-TODO
+
+To install, go to the [releases page](https://github.com/cmwylie19/sbctl/releases) of the repository and download the binary for your operating system. It is recommended to add the binary to your path. 
 
 ## Usage 
 
 This tool can install/uninstall the Trino CLI. More features to come.   
-
-FYI - This go application will be compiled into a binary called `sbctl`, there will be a version compiled for windows, mac, and linux (RPM Based). Once this occurs, there will be **no** dependecy in the user having go. For now until it is compile, there is a dependency.
 
 Run the application
 
@@ -93,7 +92,7 @@ Flags:
 ```
 
 
-Install the CLI on a Mac (other OS's are a WIP)
+Install the CLI on a Mac
 
 ```bash
 ./sbctl cli --mode=install --os=mac
@@ -108,6 +107,19 @@ Success!
 
 Usage:
  trino --version
+```
+
+
+Uninstall the CLI on a Mac
+
+```bash
+./sbctl cli --mode=uninstall --os=mac
+```
+
+output
+
+```bash
+2023/04/03 16:04:30 Binary file deleted successfully!
 ```
 
 
