@@ -1,3 +1,5 @@
+![Unit Tests](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yml/badge.svg)
+
 # Starburst Config Tool (WIP)
 
 _Tool to simplify Starburst configuration for data practioners._
@@ -5,22 +7,32 @@ _Tool to simplify Starburst configuration for data practioners._
 **TOC**
 - [Installation](#installation)
 - [Usage](#usage)
-- [Build](#build)
+- [Build](#build-image-with-sbctl)
 
 ## Installation
 TODO
 
 ## Usage 
 
-This tool can install/uninstall the Trino CLI. More features to come soon.   
+This tool can install/uninstall the Trino CLI. More features to come.   
 
-FYI - This go application will be compiled into a binary called `subctl`, there will be a version compiled for windows, mac, and linux (RPM Based). Once this occurs, there will be **no** dependecy in the user having go. For now until it is compile, there is a dependency.
+FYI - This go application will be compiled into a binary called `sbctl`, there will be a version compiled for windows, mac, and linux (RPM Based). Once this occurs, there will be **no** dependecy in the user having go. For now until it is compile, there is a dependency.
 
-Run the tool
+Run the application
 
 ```bash
 go run main.go
 ```
+
+Build and run the binary 
+
+```bash
+# from parent directory
+GOOS=<linux|darwin|windows> go build -o sbctl .
+
+./sbctl help
+```
+
 
 output
 
@@ -36,8 +48,7 @@ Usage:
   sbctl [command]
 
 Available Commands:
-  cli         Install the Trino CLI
-  completion  Generate the autocompletion script for the specified shell
+  cli         Install/Uninstall the Trino CLI
   help        Help about any command
 
 Flags:
@@ -49,48 +60,58 @@ Use "sbctl [command] --help" for more information about a command.
 Look at the Trino CLI options
 
 ```bash
-go run main.go cli -h
+./sbctl cli -h
 ```
 
 output
 
 ```bash
-Install the Trino CLI which provides a terminal-based, 
-	interactive shell for running queries.
-	
-	The CLI is a self-executing JAR file, which means it acts
-	like a normal UNIX executable. The CLI uses the Trino client
-	REST API over HTTP/HTTPS to communicate with the coordinator
-	on the cluster.
+Install/Uninstall the Trino CLI which provides a terminal-based, 
+interactive shell for running queries.
+
+The CLI is a self-executing JAR file, which means it acts
+like a normal UNIX executable. The CLI uses the Trino client
+REST API over HTTP/HTTPS to communicate with the coordinator
+on the cluster. 
+
+More info can be found here: https://starburstdata.github.io/latest/client/cli.html
+
+Examples:
+  sbctl cli --os=linux --mode=install
+
+  sbctl cli --os=mac --mode=uninstall
+
+  sbctl cli --os=windows --mode=install
 
 Usage:
   sbctl cli [flags]
 
 Flags:
   -h, --help          help for cli
-      --mode string   Options: install or uninstall (default "install")
-      --os string     Target Operating System to install the Trino CLI on. Options: mac, linux, or windows. (default "mac")
+      --mode string   Options: install or uninstall
+      --os string     Target Operating System to install the Trino CLI on. Options: mac, linux, or windows.
 ```
 
 
 Install the CLI on a Mac (other OS's are a WIP)
 
 ```bash
-go run main.go cli --mode=install --os=mac
+./sbctl cli --mode=install --os=mac
 ```
 
 output
 
 ```bash
-openjdk version "1.8.0_292"
-OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_292-b10)
-OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
+2023/04/03 15:49:11 Downloaded and renamed file to: /usr/local/bin/trino
 
-Downloaded and renamed file to: /usr/local/bin/trino
+Success!
+
+Usage:
+ trino --version
 ```
 
 
-## Build
+## Build Image with sbctl
 
 ```bash
 GOOS=<linux|darwin|windows> go build -o sbctl .

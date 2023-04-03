@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"github.com/cmwylie19/sbctl/pkg/cli"
+	"github.com/cmwylie19/sbctl/pkg/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -14,30 +15,42 @@ var (
 )
 
 // cliCmd represents the cli command
-func getCliCommand() *cobra.Command {
+func getCliCommand(logger utils.Log) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "cli",
-		Short: "Install the Trino CLI",
-		Long: `Install the Trino CLI which provides a terminal-based, 
-	interactive shell for running queries.
-	
-	The CLI is a self-executing JAR file, which means it acts
-	like a normal UNIX executable. The CLI uses the Trino client
-	REST API over HTTP/HTTPS to communicate with the coordinator
-	on the cluster.`,
+		Short: "Install/Uninstall the Trino CLI",
+		Long: `Install/Uninstall the Trino CLI which provides a terminal-based, 
+interactive shell for running queries.
+
+The CLI is a self-executing JAR file, which means it acts
+like a normal UNIX executable. The CLI uses the Trino client
+REST API over HTTP/HTTPS to communicate with the coordinator
+on the cluster. 
+
+More info can be found here: https://starburstdata.github.io/latest/client/cli.html
+
+Examples:
+  sbctl cli --os=linux --mode=install
+
+  sbctl cli --os=mac --mode=uninstall
+
+  sbctl cli --os=windows --mode=install
+`,
 		Run: func(cmd *cobra.Command, args []string) {
-			client := cli.NewCli(operatingSystem)
+			client := cli.NewCli(operatingSystem, logger)
 			if mode == "install" {
 				client.Install()
 			} else if mode == "uninstall" {
 				client.Uninstall()
 			} else {
-				panic("Invalid mode")
+
+				client.Logger.Printf("Invalid mode: valid options are install or uninstall.\nEXAMPLE:\nsbctl cli --os=linux --mode=install\n")
+				// panic("Invalid mode")
 			}
 		},
 	}
-	cmd.PersistentFlags().StringVarP(&mode, "mode", "", "install", "Options: install or uninstall")
+	cmd.PersistentFlags().StringVarP(&mode, "mode", "", "", "Options: install or uninstall")
 
-	cmd.PersistentFlags().StringVarP(&operatingSystem, "os", "", "mac", "Target Operating System to install the Trino CLI on. Options: mac, linux, or windows.")
+	cmd.PersistentFlags().StringVarP(&operatingSystem, "os", "", "", "Target Operating System to install the Trino CLI on. Options: mac, linux, or windows.")
 	return cmd
 }

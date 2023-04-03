@@ -20,16 +20,17 @@ import (
 
 	"github.com/cmwylie19/sbctl/cmd"
 	"github.com/cmwylie19/sbctl/pkg/utils"
-	"go.uber.org/zap"
 )
 
+var logger utils.Logger
+
 func main() {
-	if err := cmd.GetRootCommand().Execute(); err != nil {
-		utils.Logger.Error("Error executing command", zap.Error(err))
+	if err := cmd.GetRootCommand(logger).Execute(); err != nil {
+		logger.Infof("Error executing command: %v", err)
 		os.Exit(1)
 	}
 }
 
 func init() {
-	utils.InitLogger()
+	logger = utils.Logger{Debug: true}
 }

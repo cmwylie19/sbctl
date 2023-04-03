@@ -5,4 +5,4 @@ LABEL description="sbctl" \
       maintainer="EDA Egress Team edadataegress@redhat.com"
 
 
-COPY ./subctl /
+COPY ./sbctl /

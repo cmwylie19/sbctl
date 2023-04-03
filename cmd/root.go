@@ -18,11 +18,13 @@ package cmd
 import (
 	"os"
 
+	"github.com/cmwylie19/sbctl/pkg/utils"
 	"github.com/spf13/cobra"
 )
 
-func GetRootCommand() *cobra.Command {
-	rootCmd.AddCommand(getCliCommand())
+func GetRootCommand(logger utils.Logger) *cobra.Command {
+	rootCmd.CompletionOptions.DisableDefaultCmd = true
+	rootCmd.AddCommand(getCliCommand(logger))
 	return rootCmd
 }
 
@@ -45,8 +47,4 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-}
-
-func init() {
-	// nada yet
 }
