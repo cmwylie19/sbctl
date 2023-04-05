@@ -19,7 +19,7 @@ type Logger struct {
 
 // Log to stdout without timestamp
 func (logger Logger) Printf(format string, args ...interface{}) {
-	log.Fatalf(format, args...)
+	log.Fatalf("sbctl: "+format, args...)
 }
 
 // Log to stdout only if Debug is true.
