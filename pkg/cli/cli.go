@@ -31,7 +31,7 @@ func NewCli(os string, logger utils.Log) *CLI {
 	} else if os == "windows" {
 		destFilename = destFilename + ""
 	} else {
-		logger.Printf("sbctl: invalid os!\nsbctl: try 'sbctl cli -h' for more information.\n")
+		logger.Printf("%s Valid options are mac, linux, or windows\n\nEXAMPLE:\nsbctl cli --os=linux --mode=install\n\nsbctl: try 'sbctl cli -h' for more information.\n\n", "invalid os!")
 	}
 
 	return &CLI{
