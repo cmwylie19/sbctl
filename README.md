@@ -5,10 +5,25 @@
 _Tool to simplify Starburst configuration for data practioners._
 
 **TOC**
+- [Prereqs](#prereqs)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Build](#build-image-with-sbctl)
 - [Releases](#releases)
+
+## Prereqs
+
+The CLI requires a Java virtual machine available on the path. It can be used with Java version 8 and higher. 
+
+Find if Java is installed in your path:
+
+```bash
+➜ java -version 
+# output
+openjdk version "1.8.0_292"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_292-b10)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
+```
 
 ## Installation
 
