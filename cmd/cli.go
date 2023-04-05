@@ -44,8 +44,7 @@ Examples:
 				client.Uninstall()
 			} else {
 
-				client.Logger.Printf("Invalid mode: valid options are install or uninstall.\nEXAMPLE:\nsbctl cli --os=linux --mode=install\n")
-				// panic("Invalid mode")
+				client.Logger.Printf("%s Valid options are install, or uninstall.\n\nEXAMPLE:\nsbctl cli --os=linux --mode=install\n\nsbctl: try 'sbctl cli -h' for more information.\n\n", "invalid mode!")
 			}
 		},
 	}
