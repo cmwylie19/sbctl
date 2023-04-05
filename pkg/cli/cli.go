@@ -29,7 +29,7 @@ func NewCli(os string, logger utils.Log) *CLI {
 	if os == "mac" || os == "linux" {
 		destFilename = LINUX_PREFIX + destFilename
 	} else if os == "windows" {
-		destFilename = WINDOWS_PREFIX + destFilename
+		destFilename = destFilename + ""
 	} else {
 		logger.Printf("sbctl: invalid os!\nsbctl: try 'sbctl cli -h' for more information.\n")
 	}
