@@ -1,5 +1,8 @@
 [![Go Test](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/cmwylie19/sbctl/actions/workflows/unit-tests.yaml)
 
+[![Watch the video](https://i9.ytimg.com/vi_webp/0yL-a401YyM/mq2.webp?sqp=CLCZr6IG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLDSRRUciVjIIZmFWBHMlJSIu0LNPg)](https://www.youtube.com/watch?v=0yL-a401YyM)
+
+
 # Starburst Config Tool (WIP)
 
 _Tool to simplify Starburst configuration for data practioners._
